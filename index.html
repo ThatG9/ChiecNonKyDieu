@@ -3,29 +3,116 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Game Chiếc Nón Kì Diệu</title>
     <link rel="stylesheet" href="style.css">
-    <title>Chiếc nón kỳ diệu</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css" integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+   <script src="wheel.js"></script>
 </head>
 <body>
-    <h1 id="header_i">Chiếc nón kỳ diệu</h1>
-    <div>
-        <img src="https://kenh14cdn.com/thumb_w/650/2016/photo-1-1482579738121.png"
-        width="50%">
-        <!--
-        Luật chơi:
-        -Người chơi sẽ nhấn vào nút "quay" hoặc nhấn vào vòng tròn để quay
-        sau đó người chơi đó sẽ đoán các chữ cái để giải một câu đố/cụm từ.
-        -Người chơi nào giải câu đố nhanh nhất và chính xác nhất sẽ giành chiến thắng.
-        Trong trường hợp của đề người giành chiến thắng sẽ là người xếp thứ hạng cao nhất.
+    <!-- header -->
+    <div class="container">
+        <div class="header">
+            <h2 class="title">Chiếc Nón Kỳ Diệu</h2>
+            <p class="sub-title">Game vòng quay may mắn đoán chữ liền tay</p>
+        </div>
+    </div>
 
-        Điều kiện cần có:
-        -Vòng quay: Hình đã có, bây giờ thì chúng ta nên sử dụng phương pháp nào để lập trình
-        vòng quay đó? Lựa chọn: SVG; Map, area;... góp ý trên group hoặc ghi vào đây để không
-        bị trôi tin nhắn.
-        -Bảng câu đố: Một bảng lớn hiển thị câu đố hoặc cụm từ cần giải, với các chữ cái bị ẩn.
-        Hãy đưa ý kiến vào đây, tôi chưa nghĩ đến.
-        P.S: Đạt.
-         -->
+            <!-- Phần nhập tên người chơi -->
+        <div id="playerSetup" class="card player-setup">
+            <h3>Nhập tên để bắt đầu chơi</h3>
+            <input type="text" id="playerName" class="input-field" placeholder="Tên của bạn..." maxlength="15">
+            <br>
+            <button class="btn btn-primary" onclick="startGame()"><i class="fas fa-play"></i> Bắt đầu chơi</button>
+        </div>
+
+        <!-- Khu vực chơi game -->
+        <div id="gameArea" class="hidden">
+            <!-- Hiển thị điểm -->
+            <div class="card score-display">
+                <div>Người chơi: <span id="currentPlayer">---</span></div>
+                <div>Điểm số: <span class="score-number" id="currentScore">0</span></div>
+            </div>
+
+            <!-- Vòng quay SVG -->
+            <div class="card wheel-section">
+                <svg class="wheelSVG">
+                    <!-- Định nghĩa gradient và filter -->
+                    <defs>
+                        <filter id="shadow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="2" dy="2" stdDeviation="3" flood-color="black" flood-opacity="0.8"/>
+                        </filter>
+                        <filter id="textShadow" x="-50%" y="-50%" width="200%" height="200%">
+                            <feDropShadow dx="1" dy="1" stdDeviation="2" flood-color="black" flood-opacity="0.9"/>
+                        </filter>
+                    </defs>
+                    
+                    <!-- Vòng quay chính -->
+                    <g id="wheel" class="main-wheel">
+                        <!-- Ô 1: 100 điểm (0-60 độ) -->
+                        <path d="M 160 160 L 160 10 A 150 150 0 0 1 289.9 85 Z" class="segment seg-100"  />
+                        <text x="225" y="70" class="segment-label">100</text>
+                        
+                        <!-- Ô 2: 200 điểm (60-120 độ) -->
+                        <path d="M 160 160 L 289.9 85 A 150 150 0 0 1 289.9 235 Z" class="segment seg-200"  />
+                        <text x="270" y="160" class="segment-label">200</text>
+                        
+                        <!-- Ô 3: 300 điểm (120-180 độ) -->
+                        <path d="M 160 160 L 289.9 235 A 150 150 0 0 1 160 310 Z" class="segment seg-300"  />
+                        <text x="225" y="250" class="segment-label">300</text>
+                        
+                        <!-- Ô 4: 500 điểm (180-240 độ) -->
+                        <path d="M 160 160 L 160 310 A 150 150 0 0 1 30.1 235 Z" class="segment seg-500" />
+                        <text x="95" y="250" class="segment-label ">500</text>
+                        
+                        <!-- Ô 5: MẤT LƯỢT (240-300 độ) -->
+                        <path d="M 160 160 L 30.1 235 A 150 150 0 0 1 30.1 85 Z" class="segment seg-miss" />
+                        <text x="50" y="155"class="segment-label small">MẤT</text>
+                        <text x="50" y="175" class="segment-label small ">LƯỢT</text>
+                        
+                        <!-- Ô 6: 400 điểm (300-360 độ) -->
+                        <path d="M 160 160 L 30.1 85 A 150 150 0 0 1 160 10 Z" class="segment seg-400"/>
+                        <text x="95" y="70" class="segment-label">400</text>
+                    </g>
+                    
+                    <!-- Viền vàng -->
+                    <circle  cx="160" cy="160" r="155" class="wheel-border"/>
+                    
+                    <!-- Mũi tên cố định -->
+                    <polygon points="160,5 175,25 165,25 165,35 155,35 155,25 145,25" class="pointer" />
+                    <circle cx="160" cy="30" r="8" class="center-button"/>
+                </svg>
+                <button class="btn btn-primary" id="spinBtn" onclick="spinWheel()"> <i class="fa-solid fa-arrows-spin"></i> Quay vòng</button>
+            </div>
+
+            <!-- Trạng thái game -->
+            <div class="game-status" id="gameStatus">Nhấn "Quay vòng" để bắt đầu!</div>
+
+            <!-- Khu vực câu đố -->
+            <div id="puzzleArea" class="card puzzle-area hidden">
+                <div class="category" id="puzzleCategory">Danh mục</div>
+                <div class="puzzle-letters" id="puzzleLetters">
+                    <!-- Các ô chữ sẽ được tạo bằng JavaScript -->
+                </div>
+                <input type="text" id="guessInput" class="input-field" placeholder="Nhập đáp án...">
+                <br>
+                <button class="btn btn-success" onclick="checkAnswer()"><i class="fa-solid fa-check"></i> Trả lời</button>
+                <button class="btn btn-warning" onclick="getHint()"><i class="fa-solid fa-lightbulb"></i> Gợi ý</button>
+            </div>
+
+            <!-- Nút điều khiển -->
+            <div class="card" style="text-align: center;">
+                <button class="btn btn-primary" onclick="newGame()"><i class="fa fa-refresh" aria-hidden="true"></i> Chơi lại</button>
+                <button class="btn btn-success" onclick="saveCurrentScore()"><i class="fa-solid fa-floppy-disk"></i> Lưu điểm</button>
+                <button class="btn btn-primary" onclick="resetGame()"><i class="fa-solid fa-house-chimney"></i> Về trang chủ</button>
+            </div>
+        </div>
+<!-- Bảng xếp hạng -->
+        <div class="card leaderboard">
+            <h3 class="leaderboard-title"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</h3>
+            <div id="leaderboardList">
+                <!-- Danh sách sẽ được tạo bằng JavaScript -->
+            </div>
+        </div>
     </div>
 </body>
 </html>
