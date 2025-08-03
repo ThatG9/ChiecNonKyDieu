@@ -1,9 +1,324 @@
-div {
+/* Reset CSS cơ bản */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Thiết lập body */
+body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container */
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* tiêu đề chính */
+.title {
+    font-size: 3.5rem;
+    font-weight: 900;
+    color: rgb(202, 235, 54);
+    text-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
+}
+
+/* tiêu đề phụ */
+.sub-title {
+    font-size: 1.3rem;
+    color: #e0e6ff;
+    font-weight: 300;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    letter-spacing: 1px;
+}
+
+/* khung chứa nội dung */
+.card {
+    background: rgba(9, 6, 6, 0.1);
+    border-radius: 15px;
+    padding: 20px;
+    margin: 20px 0;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Form nhập tên */
+.player-setup {
+    text-align: center;
+}
+
+/* ô nhập tên */
+.input-field {
+    padding: 15px 20px;
+    font-size: 1.2rem;
+    border: 3px solid #777ce3;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    color: #333;
+    margin: 10px;
+    width: 300px;
+    max-width: 100%;
+}
+
+/*Nút bấm*/
+.btn {
+    padding: 12px 30px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin: 5px;
+    transition: all 0.3s ease;
+}
+
+/* nút bắt đầu và nút quay vòng,nút chơi lại,về trang chủ */
+.btn-primary {
+    background: #4a90e2;
+    color: white;
+}
+
+/* đổi màu  ô */
+.btn-primary:hover {
+    background: #0a6bcc;
+    transform: translateY(-2px);
+}
+
+/* nút trả lời và lưu điểm */
+.btn-success {
+    background: #5cb85c;
+    color: white;
+}
+
+/* đổi màu ô */
+.btn-success:hover {
+    background: #449d44;
+}
+
+/* nút gợi ý */
+.btn-warning {
+    background: #f0ad4e;
+    color: white;
+}
+
+.btn-warning:hover {
+    background: #ec971f;
+}
+
+/* Vòng quay */
+.wheel-section {
+    text-align: center;
+    margin: 30px 0;
+    position: relative;
+}
+
+/* SVG vòng quay */
+.wheelSVG {
+    width: 320px;
+    height: 320px;
+    display: block;
+    margin: 20px auto;
+}
+
+/* quay quanh tâm,chuyển động mượt 3s */
+.main-wheel {
+    transform-origin: 160px 160px;
+    transition: transform 3s ease-out;
+}
+
+/* phân đoạn từng ô trong vòng quay*/
+.segment {
+    stroke: #fff;
+    stroke-width: 3;
+    filter: url(#shadow);
+}
+
+/* chữ trong từng ô */
+.segment-label {
+    fill: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-anchor: middle;
+    filter: url(#textShadow);
+}
+
+/* chữ mất lượt */
+.segment-label.small {
+    font-size: 14px;
+}
+
+/* ô 100 */
+.seg-100 {
+    fill: #ff6b6b;
+}
+
+/* ô 200 */
+.seg-200 {
+    fill: #4ecdc4;
+}
+
+/* ô 300 */
+.seg-300 {
+    fill: #45b7d1;
+}
+
+/* ô 500 */
+.seg-500 {
+    fill: #96ceb4;
+}
+
+/* ô mất lượt */
+.seg-miss {
+    fill: #ffeaa7;
+}
+
+/* ô 400 */
+.seg-400 {
+    fill: #dda0dd;
+}
+
+/* viền vòng tròn ngoài */
+.wheel-border {
+    fill: none;
+    stroke: #ffd700;
+    stroke-width: 5;
+}
+
+/* mũi tên */
+.pointer {
+    fill: #ff0000;
+    stroke: #ffd700;
+    stroke-width: 3;
+    filter: url(#shadow);
+}
+
+/* vòng tròn trên mũi tên */
+.center-button {
+    fill: #ff0000;
+    stroke: #ffd700;
+    stroke-width: 3;
+    filter: url(#shadow);
+}
+
+/* Hiển thị điểm số */
+.score-display {
+    text-align: center;
+    font-size: 1.5rem;
+    margin: 20px 0;
+}
+
+.score-number {
+    font-size: 2.5rem;
+    color: #ffd700;
+    font-weight: bold;
+}
+
+/* Khu vực câu đố */
+.puzzle-area {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.category {
+    font-size: 1.3rem;
+    color: #87ceeb;
+    margin-bottom: 15px;
+}
+
+.puzzle-letters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin: 20px 0;
+}
+
+.letter-box {
+    width: 50px;
+    height: 60px;
+    border: 2px solid #ffd700;
+    border-radius: 5px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 1.8rem;
+    font-weight: bold;
+    background: rgba(255, 255, 255, 0.1);
 }
 
-#header_i {
-    text-align: center;
+.letter-box.revealed {
+    background: #ffd700;
+    color: #333;
 }
+
+/* Trạng thái game */
+.game-status {
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 15px;
+    margin: 15px 0;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.status-win {
+    background: rgba(92, 184, 92, 0.3);
+    border: 1px solid #5cb85c;
+}
+
+.status-lose {
+    background: rgba(217, 83, 79, 0.3);
+    border: 1px solid #d9534f;
+}
+
+/* Bảng xếp hạng */
+.leaderboard {
+    margin-top: 30px;
+}
+
+.leaderboard-title {
+    text-align: center;
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #ffd700;
+}
+
+.leaderboard-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    margin: 8px 0;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    border-left: 4px solid #ffd700;
+}
+
+.rank {
+    font-weight: bold;
+    color: #ffd700;
+    min-width: 40px;
+}
+
+.player-name {
+    flex-grow: 1;
+    margin: 0 15px;
+}
+
+.player-score {
+    font-weight: bold;
+    color: #87ceeb;
+}
+
+/* Ẩn/hiện phần tử */
+/* .hidden {
+    display: none;
+} */
