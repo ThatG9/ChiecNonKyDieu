@@ -1,14 +1,18 @@
 let leaderboardData = [];
-
 function saveCurrentScore() {
     if (gameData.playerName && gameData.currentScore) {
-        const scoreEntry = {
-            name: gameData.playerName,
-            score: gameData.currentScore
-        };
+       /* tìm người chơi trong bxh*/
+        const existingPlayerIndex = leaderboardData.findIndex(entry => entry.name === gameData.playerName);
 
-        leaderboardData.push(scoreEntry);
-        displayLeaderboard();
+        if (existingPlayerIndex !== -1) {
+            /*nếu tìm thấy tên người chơi trong bxh thì cập nhật điểm số*/
+            leaderboardData[existingPlayerIndex].score += gameData.currentScore;}
+        else {
+            /*nếu duyệt không thấy thì tạo mục mới*/
+            const scoreEntry = {
+                name: gameData.playerName,
+                score: gameData.currentScore};
+            leaderboardData.push(scoreEntry);}
         
         /*Thông báo*/
         alert('Điểm của bạn đã được lưu vào bảng xếp hạng!');
@@ -28,12 +32,13 @@ function displayLeaderboard() {
     leaderboardData.sort((a, b) => b.score - a.score);
 
     /* Duyệt mảng và tạo hàng */
-    leaderboardData.forEach((entry, index) => {
-        const row = tableBody.insertRow();
+   leaderboardData.forEach(function(entry, index) {
+    const row = tableBody.insertRow();
         row.innerHTML = `
             <td class="rank">${index + 1}</td>
             <td class="player-name">${entry.name}</td>
             <td class="player-score">${entry.score}</td>
         `;
     });
+
 }
