@@ -299,6 +299,8 @@ body {
 
 /* Bảng xếp hạng */
 .leaderboard {
+    alihn-items: center;
+    text-align: center;
     margin-top: 30px;
 }
 
@@ -319,6 +321,17 @@ body {
     border-radius: 8px;
     border-left: 4px solid #ffd700;
 }
+#leaderboardList {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#leaderboardList th {
+    text-align: center;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    color: white; 
+
 
 .rank {
     font-weight: bold;
@@ -333,7 +346,6 @@ body {
 
 .player-score {
     font-weight: bold;
-    color: #87ceeb;
 }
 
 /* Ẩn/hiện phần tử */
