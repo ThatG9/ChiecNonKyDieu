@@ -95,34 +95,29 @@
 
         <!-- Khu vực câu đố -->
         <div>
-            <!--Goi y + chu duoc chon-->
             <p id="hint"></p>
             <p id="word"></p>
-            <!--Khu vuc doan chu-->
             <p>
-                Guess one letter:
+                Đoán một chữ cái:
                 <input type="text" maxlength="1" id="letterGuess">
-                <button onclick="guessLetter()">Guess Letter</button>
+                <button onclick="guessLetter()">Đoán chữ</button>
             </p>
-            <h3>Or</h3>
-            <p>
-                Guess the whole word:
-                <input type="text" id="wordGuess">
-                <button onclick="guessWord()">Guess Word</button>
-            </p>
-            <!--Ket qua-->
             <p id="error"></p>
             <p id="message"></p>
         </div>
-        <!-- Nút điều khiển -->
-        <div class="card" style="text-align: center;">
-            <button class="btn btn-primary" onclick="newGame()"><i class="fa fa-refresh" aria-hidden="true"></i> Chơi
-                lại</button>
-            <button class="btn btn-success" onclick="saveCurrentScore()"><i class="fa-solid fa-floppy-disk"></i> Lưu
-                điểm</button>
-            <button class="btn btn-primary" onclick="resetGame()"><i class="fa-solid fa-house-chimney"></i> Về trang
-                chủ</button>
-        </div>
+        <!--Ket qua-->
+        <p id="error"></p>
+        <p id="message"></p>
+    </div>
+    <!-- Nút điều khiển -->
+    <div class="card" style="text-align: center;">
+        <button class="btn btn-primary" onclick="newGame()"><i class="fa fa-refresh" aria-hidden="true"></i> Chơi
+            lại</button>
+        <button class="btn btn-success" onclick="saveCurrentScore()"><i class="fa-solid fa-floppy-disk"></i> Lưu
+            điểm</button>
+        <button class="btn btn-primary" onclick="resetGame()"><i class="fa-solid fa-house-chimney"></i> Về trang
+            chủ</button>
+    </div>
     </div>
     <!-- Bảng xếp hạng -->
     <div class="card leaderboard">
