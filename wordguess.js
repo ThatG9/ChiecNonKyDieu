@@ -1,3 +1,5 @@
+window.onload = start;
+
 let currentWord, currentHint, revealedLetters, gameOver;
 
 const words = [
@@ -64,7 +66,7 @@ function guessLetter() {
     updateWordDisplay();
 
     if (revealedLetters.join("") === currentWord) {
-        endGame("Bạn đã thắng!");
+        endGame("Bạn đã đoán đúng!");
     } else if (!found) {
         error.textContent = `Không có ký tự "${guess}" trong từ.`;
     }
