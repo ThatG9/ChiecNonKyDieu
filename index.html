@@ -94,17 +94,17 @@
         <div class="game-status" id="gameStatus">Nhấn "Quay vòng" để bắt đầu!</div>
 
         <!-- Khu vực câu đố -->
-        <div>
-            <p id="hint"></p>
-            <p id="word"></p>
-            <p>
-                Đoán một chữ cái:
-                <input type="text" maxlength="1" id="letterGuess">
-                <button onclick="guessLetter()">Đoán chữ</button>
-            </p>
-            <p id="error"></p>
-            <p id="message"></p>
-        </div>
+    <div>
+        <p id="hint"></p>
+        <p id="word"></p>
+        <p id="guess">
+            Đoán một chữ cái:
+            <input type="text" maxlength="1" id="letterGuess">
+            <button id="button-guess" onclick="guessLetter()">Đoán chữ</button>
+        </p>
+        <p id="error"></p>
+        <p id="message"></p>
+    </div>
         <!--Ket qua-->
         <p id="error"></p>
         <p id="message"></p>
