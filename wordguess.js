@@ -1,10 +1,5 @@
-//Bat dau sau khi load xong tat ca
-window.onload = start;
+let currentWord, currentHint, revealedLetters, gameOver;
 
-//tao bien
-let currentWord, currentHint, revealedLetters, guessedLetters, gameOver;
-
-//data
 const words = [
     { word: "táo", hint: "Một loại trái cây màu đỏ hoặc xanh" },
     { word: "chuối", hint: "Một loại trái cây dài màu vàng" },
@@ -20,71 +15,47 @@ const words = [
     { word: "sữa", hint: "Thức uống màu trắng từ bò" }
 ];
 
-//Hien chu duoc chon
 function updateWordDisplay() {
-  let wordContainer = document.getElementById("word");
-  wordContainer.textContent = revealedLetters.join("");
+    document.getElementById("word").textContent = revealedLetters.join("");
 }
 
-//Ket thuc
 function endGame(message) {
     document.getElementById("message").textContent = message;
     gameOver = true;
 }
 
-//Bat dau
 function start() {
     let choice = words[Math.floor(Math.random() * words.length)];
     currentWord = choice.word.toLowerCase();
     currentHint = choice.hint;
-    
-    //clearing previous data/flag
-    guessedLetters = [];
-    revealedLetters = [];
     gameOver = false;
 
-    //display hidden word
+    revealedLetters = [];
     for (let i = 0; i < currentWord.length; i++) {
-        if (currentWord[i] === " ") {
-            revealedLetters.push(" ");
-        } else {
-            revealedLetters.push("_");
-        }
+        revealedLetters.push(currentWord[i] === " " ? " " : "_");
     }
 
     updateWordDisplay();
-
-    //write hint + clear previous msg
     document.getElementById("hint").textContent = "Gợi ý: " + currentHint;
     document.getElementById("error").textContent = "";
     document.getElementById("message").textContent = "";
 }
 
-// Doan chu
 function guessLetter() {
     if (gameOver) return;
 
-    const letterInput = document.getElementById("letterGuess");
-    const guess = letterInput.value.toLowerCase();
-    const error = document.getElementById("error");
+    let guess = document.getElementById("letterGuess").value.toLowerCase();
+    let error = document.getElementById("error");
 
-    if (!guess.match(/^[a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]$/i)) {
-        error.textContent = "Vui lòng nhập một ký tự (a-z hoặc tiếng Việt có dấu).";
+    if (!/^[a-zàáạảãâầấậẩẫăằắặẳẵèéẹẻẽêềếệểễìíịỉĩòóọỏõôồốộổỗơờớợởỡùúụủũưừứựửữỳýỵỷỹđ]$/i.test(guess)) {
+        error.textContent = "Vui lòng nhập một ký tự hợp lệ.";
         return;
     }
-
-    if (guessedLetters.includes(guess)) {
-        error.textContent = `Bạn đã đoán "${guess}" trước đó rồi.`;
-        letterInput.value = "";
-        return;
-    }
-
     error.textContent = "";
-    guessedLetters.push(guess);
 
     let found = false;
     for (let i = 0; i < currentWord.length; i++) {
-        if (currentWord[i] === guess && revealedLetters[i] === "_") {
+        if (currentWord[i] === guess) {
             revealedLetters[i] = guess;
             found = true;
         }
@@ -93,35 +64,10 @@ function guessLetter() {
     updateWordDisplay();
 
     if (revealedLetters.join("") === currentWord) {
-        endGame("Bạn đã đoán đúng.");
+        endGame("Bạn đã thắng!");
     } else if (!found) {
-        endGame(`Không có "${guess}" trong từ.`);
+        error.textContent = `Không có ký tự "${guess}" trong từ.`;
     }
 
-    letterInput.value = "";
-}
-
-// Doan tu
-function guessWord() {
-    if (gameOver) return;
-
-    let wordInput = document.getElementById("wordGuess");
-    let guess = wordInput.value.trim().toLowerCase();
-    let error = document.getElementById("error");
-
-    if (guess === "") {
-        error.textContent = "Vui lòng nhập một từ.";
-        return;
-    }
-    error.textContent = "";
-
-    if (guess === currentWord) {
-        revealedLetters = currentWord.split("");
-        updateWordDisplay();
-        endGame("Bạn đã đoán đúng.");
-    } else {
-        endGame("Bạn đã đoán sai.");
-    }
-
-    wordInput.value = "";
+    document.getElementById("letterGuess").value = "";
 }
