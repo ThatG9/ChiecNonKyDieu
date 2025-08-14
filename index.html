@@ -5,13 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Chiếc Nón Kì Diệu</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style11.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
         integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <script src="wheel1.js"></script>
-    <script src="wordguess.js"></script>
-    <script src="rank.js"></script>
 </head>
 
 <body>
@@ -95,20 +93,15 @@
         <div class="game-status" id="gameStatus">Nhấn "Quay vòng" để bắt đầu!</div>
 
         <!-- Khu vực câu đố -->
-    <div>
-        <p id="hint"></p>
-        <p id="word"></p>
-        <p id="guess">
-            Đoán một chữ cái:
-            <input type="text" maxlength="1" id="letterGuess">
-            <button id="button-guess" onclick="guessLetter()">Đoán chữ</button>
-        </p>
-        <p id="error"></p>
-        <p id="message"></p>
-    </div>
-        <!--Ket qua-->
-        <p id="error"></p>
-        <p id="message"></p>
+        <div id="puzzleArea" class="card puzzle-area hidden">
+            <p id="hint"></p>
+            <p id="word"></p>
+            <p id="guess">
+                Đoán một chữ cái:
+                <input type="text" maxlength="1" id="letterGuess">
+                <button class="btn btn-guess" onclick="guessLetter()">Đoán chữ</button>
+            </p>
+        </div>
     </div>
     <!-- Nút điều khiển -->
     <div class="card" style="text-align: center;">
@@ -124,17 +117,8 @@
     <div class="card leaderboard">
         <h3 class="leaderboard-title"><i class="fa-solid fa-trophy"></i> Bảng xếp hạng</h3>
         <div id="leaderboardList">
-            <table class="leaderboard-table" id="leaderboardList">
-                <thead>
-                    <tr>
-                        <th class="rank">Hạng</th>
-                        <th class="player-name">Tên người chơi</th>
-                        <th class="player-score">Điểm số</th>
-                    </tr>
-                </thead>
-                <tbody id="leaderboardBody"></tbody>
-            </table>
         </div>
+    </div>
     </div>
     <p id="error"></p>
     <p id="message"></p>
