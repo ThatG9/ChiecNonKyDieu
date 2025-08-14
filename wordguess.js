@@ -1,5 +1,3 @@
-window.onload = start;
-
 let currentWord, currentHint, revealedLetters, gameOver;
 
 const words = [
