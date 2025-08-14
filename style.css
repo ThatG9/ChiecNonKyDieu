@@ -103,14 +103,15 @@ body {
     background: #449d44;
 }
 
-/* nút gợi ý */
-.btn-warning {
-    background: #f0ad4e;
+/* nút đoán chữ */
+.btn-guess {
+    background: #0cc834;
     color: white;
 }
 
-.btn-warning:hover {
-    background: #ec971f;
+/* đổi màu ô */
+.btn-guess:hover {
+    background: #179908;
 }
 
 /* Vòng quay */
@@ -220,61 +221,52 @@ body {
     color: #ffd700;
     font-weight: bold;
 }
-
+.puzzle-area {
+    text-align: center;
+    margin: 20px 0;
+}
 /* Khu vực câu đố */
 #hint {
-  text-align: center;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #8fbdcf;
+    font-weight: bold;
+    margin: 10px 0;
+    font-family: 'Arial', sans-serif;
+    user-select: none;
+    padding: 10px;
 }
 
 #word {
-  font-size: 2.5em;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  font-weight: 700;
-  text-align: center;
-  margin: 10px;
-  font-family: 'Times New Roman', Times, serif;
-  user-select: none;
+    font-size: 2.5em;
+    letter-spacing: 0.4em;
+    text-transform: uppercase;
+    font-weight: 700;
+    text-align: center;
+    margin: 10px;
+    font-family: 'Times New Roman', Times, serif;
+    user-select: none;
 }
 
 #guess {
-  text-align: center;
+    text-align: center;
+    font-size: 1.2rem;
+    color: #cfab8f;
+    font-weight: bold;
+    margin: 10px 0;
+    font-family: 'Arial', sans-serif;
+    user-select: none;
+    padding: 10px;
 }
 
 #letterGuess {
     padding: 15px 20px;
-    font-size: 1.2rem;
+    font-size: 1.6rem;
     border: 3px solid;
     border-radius: 10px;
     margin: 10px;
-    width: 10px;
+    width: 60px;
     color: black;
-}
-
-#button-guess {
-    padding: 10px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    margin: 10px;
-    background-color: #5cb85c;
-}
-
-#error {
-    text-align: center;
-    font-size: 1.1rem;
-    color: #ff4d4d;
-    font-weight: bold;
-    margin-top: 10px;
-}
-
-#message {
-    text-align: center;
-    font-size: 1.3rem;
-    color: #ffd700;
-    font-weight: bold;
-    margin-top: 10px;
 }
 
 /* Trạng thái game */
@@ -299,8 +291,6 @@ body {
 
 /* Bảng xếp hạng */
 .leaderboard {
-    alihn-items: center;
-    text-align: center;
     margin-top: 30px;
 }
 
@@ -321,17 +311,6 @@ body {
     border-radius: 8px;
     border-left: 4px solid #ffd700;
 }
-#leaderboardList {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#leaderboardList th {
-    text-align: center;
-    padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
-    color: white; 
-
 
 .rank {
     font-weight: bold;
@@ -346,9 +325,10 @@ body {
 
 .player-score {
     font-weight: bold;
+    color: #87ceeb;
 }
 
 /* Ẩn/hiện phần tử */
-/* .hidden {
+.hidden {
     display: none;
-} */
+ }  
