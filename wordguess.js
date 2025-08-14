@@ -73,3 +73,44 @@ function guessLetter() {
 
     document.getElementById("letterGuess").value = "";
 }
+
+// Hàm chơi lại
+function newGame() {
+    
+    gameData.currentScore = 0;
+    gameData.wheelValue = 0;
+    gameData.hintsUsed = 0;
+    gameData.wrongAttempts = 0;
+    gameData.autoHintTimer = null;
+
+    updateScore();
+    document.getElementById('puzzleArea').classList.add('hidden');
+    showStatus('Quay vòng để bắt đầu!', '');
+}
+
+// Hàm reset game
+function resetGame() {
+
+    // Lưu điểm vào bảng xếp hạng trước khi reset
+    if (gameData.currentScore > 0 && gameData.playerName) {
+        saveCurrentScore();
+    }
+
+    // Reset tất cả
+    gameData = {
+        playerName: '',
+        currentScore: 0,
+        wheelValue: 0,
+        currentPuzzle: null,
+        isSpinning: false,
+        hintsUsed: 0,
+        wrongAttempts: 0,
+        autoHintTimer: null
+    };
+
+    document.getElementById('playerSetup').classList.remove('hidden');
+    document.getElementById('gameArea').classList.add('hidden');
+    document.getElementById('playerName').value = '';
+
+    displayLeaderboard();
+}
