@@ -68,6 +68,7 @@ function guessLetter() {
     if (revealedLetters.join("") === currentWord) {
         endGame("Bạn đã đoán đúng!");
         gameData.currentScore += gameData.wheelValue;
+        updateScore();
     } else if (!found) {
         error.textContent = `Không có ký tự "${guess}" trong từ.`;
     }
