@@ -1,4 +1,4 @@
-windows.onload = start;
+window.onload = start;
 
 let currentWord, currentHint, revealedLetters, gameOver;
 
