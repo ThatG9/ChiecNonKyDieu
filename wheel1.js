@@ -191,7 +191,7 @@ function guessLetter() {
         setTimeout(function () {
             document.getElementById('puzzleArea').classList.add('hidden');
             showStatus('Quay vòng để tiếp tục!', '');
-        }, 2000);
+        }, 4000);
     } else if (!found) {
         showStatus(`Rất tiếc! Chữ "${guess}" không có trong từ. Hãy thử lại!`, "lose");
     }
@@ -321,3 +321,4 @@ window.onload = function () {
         }
     });
 }
+
