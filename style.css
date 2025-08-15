@@ -132,7 +132,7 @@ body {
 /* quay quanh tâm,chuyển động mượt 3s */
 .main-wheel {
     transform-origin: 160px 160px;
-    transition: transform 3s ease-out;
+    /* transition: transform 3s ease-out; */
 }
 
 /* phân đoạn từng ô trong vòng quay*/
@@ -312,12 +312,12 @@ body {
     border-collapse: collapse;
     margin: 0 auto;
 }
-
+/* bang xep hang */
 #leaderboardList {
     width: 100%;
     border-collapse: collapse;
 }
-
+/* hàng tiêu đề bảng */
 #leaderboardList th {
     text-align: center;
     padding: 10px;
@@ -326,6 +326,7 @@ body {
     font-weight: bold;
     color: white; 
 }
+/* các ô trong bảng */
 #leaderboardList td {
     padding: 10px;
     text-align: center;
@@ -353,3 +354,21 @@ body {
 .hidden {
     display: none;
  }  
+
+ /* Hiệu ứng nhấp nháy */
+.blink {
+    animation: blink 1s infinite;
+}
+
+@keyframes blink {
+
+    0%,
+    50% {
+        opacity: 1;
+    }
+
+    51%,
+    100% {
+        opacity: 0.5;
+    }
+}
