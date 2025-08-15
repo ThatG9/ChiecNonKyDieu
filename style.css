@@ -215,17 +215,18 @@ body {
     font-size: 1.5rem;
     margin: 20px 0;
 }
-
+/* Điểm */
 .score-number {
     font-size: 2.5rem;
     color: #ffd700;
     font-weight: bold;
 }
+/* Khu vực câu đố */
 .puzzle-area {
     text-align: center;
     margin: 20px 0;
 }
-/* Khu vực câu đố */
+/* Gợi ý */
 #hint {
     text-align: center;
     font-size: 1.2rem;
@@ -237,6 +238,7 @@ body {
     padding: 10px;
 }
 
+/* Hiển thị từ */
 #word {
     font-size: 2.5em;
     letter-spacing: 0.4em;
@@ -248,6 +250,7 @@ body {
     user-select: none;
 }
 
+/* Ô nhập chữ cái */
 #guess {
     text-align: center;
     font-size: 1.2rem;
@@ -259,13 +262,14 @@ body {
     padding: 10px;
 }
 
+/* Ô chữ cái */
 #letterGuess {
-    padding: 20px 20px;
+    padding: 15px 20px;
     font-size: 1.6rem;
     border: 3px solid;
     border-radius: 10px;
     margin: 10px;
-    width: 60px;
+    width: 70px;
     color: black;
 }
 
@@ -279,11 +283,13 @@ body {
     background: rgba(255, 255, 255, 0.1);
 }
 
+/*thông báo xanh*/
 .status-win {
     background: rgba(92, 184, 92, 0.3);
     border: 1px solid #5cb85c;
 }
 
+/*thông báo đỏ*/
 .status-lose {
     background: rgba(217, 83, 79, 0.3);
     border: 1px solid #d9534f;
@@ -291,18 +297,21 @@ body {
 
 /* Bảng xếp hạng */
 .leaderboard {
-    align-items: center;
-    text-align: center;
     margin-top: 30px;
 }
-
+/* tiêu đề bxh */
 .leaderboard-title {
     text-align: center;
     font-size: 1.8rem;
     margin-bottom: 20px;
     color: #ffd700;
 }
-
+/* Bảng xếp hạng */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 0 auto;
+}
 
 #leaderboardList {
     width: 100%;
@@ -312,21 +321,32 @@ body {
 #leaderboardList th {
     text-align: center;
     padding: 10px;
-    background: rgba(255, 255, 255, 0.1);
+    background: rgb(255 255 255 / 55%);
+    border-bottom: 2px solid #ffd700;
+    font-weight: bold;
     color: white; 
 }
+#leaderboardList td {
+    padding: 10px;
+    text-align: center;
+}
+/* xếp hạng */
 .rank {
     font-weight: bold;
     min-width: 40px;
+    color: #ffd700;
 }
-
+/* tên người chơi */
 .player-name {
     flex-grow: 1;
     margin: 0 15px;
+    font-weight: bold;
+    color: #060606;
 }
-
+/* điểm người chơi*/
 .player-score {
     font-weight: bold;
+    color: #87ceeb;
 }
 
 /* Ẩn/hiện phần tử */
