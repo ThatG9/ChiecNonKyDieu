@@ -303,16 +303,7 @@ body {
     color: #ffd700;
 }
 
-.leaderboard-item {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 15px;
-    margin: 8px 0;
-    background: rgba(255, 255, 255, 0.1);
-    border-radius: 8px;
-    border-left: 4px solid #ffd700;
-}
+
 #leaderboardList {
     width: 100%;
     border-collapse: collapse;
