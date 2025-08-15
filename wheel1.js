@@ -187,7 +187,7 @@ function guessLetter() {
         gameData.currentScore += points;
         updateScore();
         showStatus(`Chúc mừng! Bạn đã đoán đúng từ "${gameData.currentWord}".Bạn được ${points} điểm!`, "win");
-        // Ẩn câu đố sau 2 giây
+        // Ẩn câu đố sau 4 giây
         setTimeout(function () {
             document.getElementById('puzzleArea').classList.add('hidden');
             showStatus('Quay vòng để tiếp tục!', '');
@@ -321,4 +321,3 @@ window.onload = function () {
         }
     });
 }
-
