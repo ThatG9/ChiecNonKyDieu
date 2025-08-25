@@ -63,7 +63,7 @@ body {
     border: 3px solid #777ce3;
     border-radius: 8px;
     background: rgba(255, 255, 255, 0.9);
-    color: #333;
+    color: #0a0a0a;
     margin: 10px;
     width: 300px;
     max-width: 100%;
@@ -132,7 +132,7 @@ body {
 /* quay quanh tâm,chuyển động mượt 3s */
 .main-wheel {
     transform-origin: 160px 160px;
-    /* transition: transform 3s ease-out; */
+    transition: transform 3s ease-out;
 }
 
 /* phân đoạn từng ô trong vòng quay*/
@@ -221,11 +221,6 @@ body {
     color: #ffd700;
     font-weight: bold;
 }
-/* Khu vực câu đố */
-.puzzle-area {
-    text-align: center;
-    margin: 20px 0;
-}
 /* Gợi ý */
 #hint {
     text-align: center;
@@ -233,7 +228,6 @@ body {
     color: #8fbdcf;
     font-weight: bold;
     margin: 10px 0;
-    font-family: 'Arial', sans-serif;
     user-select: none;
     padding: 10px;
 }
@@ -246,7 +240,6 @@ body {
     font-weight: 700;
     text-align: center;
     margin: 10px;
-    font-family: 'Times New Roman', Times, serif;
     user-select: none;
 }
 
@@ -257,7 +250,6 @@ body {
     color: #cfab8f;
     font-weight: bold;
     margin: 10px 0;
-    font-family: 'Arial', sans-serif;
     user-select: none;
     padding: 10px;
 }
@@ -270,7 +262,6 @@ body {
     border-radius: 10px;
     margin: 10px;
     width: 70px;
-    color: black;
 }
 
 /* Trạng thái game */
@@ -312,13 +303,9 @@ body {
     border-collapse: collapse;
     margin: 0 auto;
 }
-/* bang xep hang */
-#leaderboardList {
-    width: 100%;
-    border-collapse: collapse;
-}
+
 /* hàng tiêu đề bảng */
-#leaderboardList th {
+.leaderboard-table th {
     text-align: center;
     padding: 10px;
     background: rgb(255 255 255 / 55%);
@@ -327,7 +314,7 @@ body {
     color: white; 
 }
 /* các ô trong bảng */
-#leaderboardList td {
+.leaderboard-table td {
     padding: 10px;
     text-align: center;
 }
@@ -339,7 +326,6 @@ body {
 }
 /* tên người chơi */
 .player-name {
-    flex-grow: 1;
     margin: 0 15px;
     font-weight: bold;
     color: #060606;
