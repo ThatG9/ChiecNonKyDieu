@@ -41,7 +41,7 @@ function startGame() {
     gameData.playerName = name;
     gameData.currentScore = 0;
     // Hiển thị tên người chơi trên giao diện
-    document.getElementById('currentPlayer').textContent = name;
+    document.getElementById('currentPlayer').innerText = name;
     // Ẩn phần nhập tên và hiển thị khu vực chơi game
     document.getElementById('playerSetup').classList.add('hidden');
     document.getElementById('gameArea').classList.remove('hidden');
@@ -71,7 +71,7 @@ function spinWheel() {
     const result = wheelValues[randomIndex];
 
     const segments = wheelValues.length; // Số ô trên vòng quay (6)
-    const segmentAngle = 360 / segments; // Góc mỗi ô (60 độ)
+    const segmentAngle = 360 / segments; // Góc mỗi ô (60 độ)a
 
     // Tính góc giữa ô cần dừng (giữa ô)
     const sectorCenter = randomIndex * segmentAngle + (segmentAngle / 2);
@@ -90,9 +90,6 @@ function spinWheel() {
 
     // Cộng dồn góc quay tổng
     gameData.currentRotation += extraSpins * 360 + delta;
-
-    // Thiết lập hiệu ứng quay 3 giây, easing ease-out
-    wheel.style.transition = 'transform 3s ease-out';
 
     // Thực hiện quay vòng
     wheel.style.transform = `rotate(${gameData.currentRotation}deg)`;
@@ -211,7 +208,6 @@ function newGame() {
     //reset giao diện
     document.getElementById('puzzleArea').classList.add('hidden');
     document.getElementById('letterGuess').value = '';
-    document.getElementById('wheelResult').textContent = '';
     showStatus('Quay vòng để bắt đầu!', '');
 
 }
